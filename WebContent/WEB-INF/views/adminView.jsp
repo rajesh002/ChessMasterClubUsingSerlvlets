@@ -20,6 +20,8 @@
 	<button class="button"  onclick="tournamentWinner()">Make As Tournament Winner</button>
 	<button class="button"  onclick="playersOfTournament()">Players of Tournaments</button>
 	<button class="button"  onclick="requests()">Pending requests</button>
+	<button class="button"  onclick="update()">Rename Tournaments</button>
+	<button class="button"  onclick="deleted()">Delete Tournament</button>
 	
 <div id="newTournament">    
 <jsp:include page="displayTournament.jsp" />  
@@ -101,6 +103,30 @@
  <div id="pendingRequests">
  <jsp:include page="pendingRequests.jsp" /> 
  </div>
+
+
+<div id="update">    
+<jsp:include page="displayTournament.jsp" />  
+
+<form action="${pageContext.request.contextPath}/update" method="post">
+			<div><label class="label">Tournament ID</label>
+            <input type="text" name="tournamentID" id="tournamentID"></div>
+            <div><label class="label">New Name</label>
+            <input type="text" name="tournamentName" id="tournamentName"></div>
+            <button class="button1" type="submit">ADD</button>
+        </form>
+ </div>
+
+ 
+ <div id="deleted">
+ <jsp:include page="displayTournament.jsp" /> 
+<form action="${pageContext.request.contextPath}/delete" method="post">
+			<div><label class="label">Tournament ID</label>
+            <input type="text" name="tournamentID" id="tournamentID"></div>
+            <button class="button1" type="submit">DELETE</button>
+        </form>
+ </div>
+ 
 
 </body>
 </html>

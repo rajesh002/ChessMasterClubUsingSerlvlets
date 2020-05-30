@@ -4,7 +4,7 @@
 	width:auto;
 }
 
-#newPlayer,#recordWin,#recordLoss,#tournamentWinner,#PlayersOfTournament,#pendingRequests,#requestToJoin,#tournamentWinners {
+#newPlayer,#recordWin,#recordLoss,#tournamentWinner,#PlayersOfTournament,#pendingRequests,#requestToJoin,#tournamentWinners,#deleted,#update {
   display: none;
 }
 

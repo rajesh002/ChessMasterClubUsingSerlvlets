@@ -39,6 +39,15 @@ public class TournamentOperations implements TournamentDAOInterface {
 	}
 	
 	
+	public void renameTournament(int id,String name) throws Exception {
+		Connection con=ConnectionManager.getConnection();
+		PreparedStatement pstmt = con.prepareStatement("update tournament set name=? where id=?");
+		pstmt.setString(1, name);
+		pstmt.setInt(2,id);
+		pstmt.executeUpdate();
+		con.close();
+	}
+	
 	
 	//Displaying Tournaments Data
 	public void displayTournaments() throws Exception{
@@ -88,6 +97,25 @@ public class TournamentOperations implements TournamentDAOInterface {
 			con.close();
 			return true;
 		}
+	}
+	
+	
+	public void deleteTournament(int id) throws Exception {
+		PreparedStatement pstmt1,pstmt2,pstmt3;
+		Connection con=ConnectionManager.getConnection();
+		PreparedStatement pstmt = con.prepareStatement("select ranking.id from tournament,ranking,players where tournament.id=? and players.tournament_id=tournament.id and players.id=ranking.id");
+		pstmt.setInt(1, id);
+		ResultSet rs=pstmt.executeQuery();
+		while(rs.next()) {
+			pstmt1 = con.prepareStatement("delete from ranking where ranking.id=+?");
+			pstmt1.setInt(1, rs.getInt("id"));
+			pstmt1.executeUpdate();
+			pstmt2 = con.prepareStatement("delete from players where players.id=+?");
+			pstmt2.setInt(1, rs.getInt("id"));
+			pstmt2.executeUpdate();
+		}
+		pstmt3 = con.prepareStatement("delete from tournament where id="+id);
+		pstmt3.executeUpdate();
 	}
 	
 	
