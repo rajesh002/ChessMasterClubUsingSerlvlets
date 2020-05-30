@@ -34,7 +34,7 @@ public class LoginController extends HttpServlet {
 		String username = request.getParameter("Username"); 
 		String password = request.getParameter("password"); 
 		
-		HttpSession session = request.getSession(true);
+		HttpSession session = request.getSession();
 
 		UserDAO userdao= new UserDAO();
 		try {

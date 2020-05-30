@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CHESS MASTER CLUB</title>
+
+<title>CHESS MASTER CLUB</title>
     <link type="text/css" rel="stylesheet" href="./css/style.css">
 </head>
 <body>
@@ -20,13 +20,15 @@
             <li> <a href="${pageContext.request.contextPath}/signup">Sign Up</a></li>
         </ul>
     </nav>
-    <div class="login-form">
-        <form action="${pageContext.request.contextPath}/login" method="post">
+	<div class="signup-form">
+        <form action="${pageContext.request.contextPath}/signup" method="post">
             <div><label class="label" for="Username">Username</label>
             <input type="text" name="Username" id="Username"></div>
             <div><label class="label" for="password">Password</label>
             <input type="password" name="password" id="password"></div>
-            <button class="button1" type="submit">Login</button>
+            <div><label class="label" for="confirmPassword">Confirm Password</label>
+            <input type="password" name="confirmPassword" id="confirmPassword"></div>
+            <button class="button1" type="submit">SignUp</button>
         </form>
     </div>
 </body>

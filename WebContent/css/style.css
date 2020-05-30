@@ -4,6 +4,10 @@
 	width:auto;
 }
 
+#newPlayer,#recordWin,#recordLoss,#tournamentWinner,#PlayersOfTournament,#pendingRequests,#requestToJoin,#tournamentWinners {
+  display: none;
+}
+
 h1{
 	text-align:center;
 	color:white;
@@ -36,4 +40,14 @@ input{
 	width:100px;
 	margin:10px;
 	
+}
+
+li{
+	list-style: none;
+}
+
+
+ul{
+	display:grid;
+	grid-template-columns:80% 10% 10%;
 }
