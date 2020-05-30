@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,12 +40,15 @@ public class AddUser extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session=request.getSession(false);
+		HttpSession session=request.getSession(true);
 		
 		PlayerOperations playeroperations=new PlayerOperations();
 		
 		String username = (String) session.getAttribute("username");
 		String password = (String) session.getAttribute("password");
+		
+		System.out.println(username);
+		System.out.println(password);
 		
 		String playername = request.getParameter("playerName"); 
 		int age = Integer.parseInt(request.getParameter("playerAge"));
@@ -54,6 +59,8 @@ public class AddUser extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		RequestDispatcher rd=this.getServletContext().getRequestDispatcher("/WEB-INF/views/userView.jsp");
+		rd.forward(request, response);
 	}
 
 }

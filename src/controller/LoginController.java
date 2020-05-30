@@ -34,18 +34,18 @@ public class LoginController extends HttpServlet {
 		String username = request.getParameter("Username"); 
 		String password = request.getParameter("password"); 
 		
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(true);
 
 		UserDAO userdao= new UserDAO();
 		try {
 			if(userdao.admin(username,password)) {
-				session.setAttribute("userName", request.getParameter("username"));
+				session.setAttribute("username", request.getParameter("Username"));
 				session.setAttribute("password", request.getParameter("password"));
 				RequestDispatcher rd=this.getServletContext().getRequestDispatcher("/WEB-INF/views/adminView.jsp");
 				rd.forward(request, response);
 			}
 			else if(userdao.login(username,password)) {
-				session.setAttribute("userName", request.getParameter("username"));
+				session.setAttribute("username", request.getParameter("Username"));
 				session.setAttribute("password", request.getParameter("password"));
 				RequestDispatcher rd=this.getServletContext().getRequestDispatcher("/WEB-INF/views/userView.jsp");
 				rd.forward(request, response);
